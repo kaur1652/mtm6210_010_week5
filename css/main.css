@@ -1,0 +1,178 @@
+body {
+    background-color: white;
+}
+
+.transition,
+.transform,
+.animation {
+    border: 1px solid #999;
+    margin: 1rem 0;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+}
+
+.b1 {
+    background-color: lightcoral;
+}
+
+.b2 {
+    background-color: lightpink;
+}
+
+.b3 {
+    background-color: aquamarine;
+}
+
+.b4 {
+    background-color: lightseagreen;
+}
+
+/* CSS transition */
+
+/* property, duration, timing-function,delay */
+.transition .b1 {
+    transition: width 1s ease-in-out 0.5s;
+}
+
+.transition .b1:hover {
+    width: 400px;
+}
+
+.transition .b2 {
+    transition: width 1s ease-in 0.5s, height 0.5s ease-in 1s;
+
+}
+
+.transition .b2:hover {
+    width: 400px;
+    height: 400px;
+    background-color: palevioletred;
+}
+
+.transition .b3 {
+    transition: all 1s ease-out 0.5s;
+
+}
+
+.transition .b3:hover {
+    background-color: purple;
+    border-radius: 50%
+}
+
+/*  css transform */
+
+.transform .box {
+    transition: all 1s ease-out 0.3s;
+}
+
+.transform .b1 {
+    transform-origin: top left;
+}
+
+.transform .b1:hover {
+    transform: rotate(45deg);
+}
+
+.transform .b2:hover {
+    transform: translate(20px, 30px);
+}
+
+.transform .b3:hover {
+    transform: scale(0.7);
+}
+
+/* default state */
+.transform .b4 {
+    transform: skew(10deg, 10deg);
+}
+
+/* hover state */
+.transform .b4:hover {
+    transform: skew(0);
+    transform: scale(5);
+}
+
+/* css animation */
+@keyframes changeColor {
+    from {
+        background-color: blueviolet;
+    }
+
+    to {
+        background-color: brown;
+    }
+}
+
+.animation .b1 {
+    animation-name: changeColor;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-fill-mode: both;
+}
+
+@keyframes moveAround {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(200px, 0);
+    }
+
+    50% {
+        transform: translate(200px, 200px);
+    }
+
+    75% {
+        transform: translate(0, 200px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.animation .b2 {
+    /* name duration */
+    animation: moveAround 4s;
+    animation-delay: 2s;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+}
+
+@keyframes multipleTransformations {
+    0% {
+        transform: scale(0.5) translateX(0);
+    }
+
+    100% {
+        transform: scale(1.4) translateX(500px);
+    }
+}
+
+.animation .b3 {
+    /* name, duration, timingfunction, delay, count, direction, */
+    animation: multipleTransformations 2s cubic-bezier(.91, .51, .07, 1.55) 3s 12 alternate;
+}
+
+@keyframes multipleThings {
+    0% {
+        transform: scale(1) ;
+    }
+
+    100% {
+        transform: scale(1.9) ;
+
+    }
+}
+
+.animation .b4 {
+    animation: multipleThings 1s cubic-bezier(.66, .49, .01, 1.02) 1s 10 reverse;
+}
+.animation .b4:active{
+animation-play-state: paused;
+
+}
